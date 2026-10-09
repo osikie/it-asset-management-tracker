@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Asset Management Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">IT<span>Asset</span></div>
+    <div class="profile">IT Support Dashboard</div>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">IT OPERATIONS</p>
+        <h1>Asset Management</h1>
+        <p>Track, manage, and monitor your IT equipment.</p>
+      </div>
+      <button id="addAssetBtn">+ Add New Asset</button>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <p>Total Assets</p>
+        <h2 id="totalAssets">0</h2>
+      </article>
+      <article class="stat-card">
+        <p>In Use</p>
+        <h2 id="inUseAssets">0</h2>
+      </article>
+      <article class="stat-card">
+        <p>Available</p>
+        <h2 id="availableAssets">0</h2>
+      </article>
+      <article class="stat-card">
+        <p>Maintenance</p>
+        <h2 id="maintenanceAssets">0</h2>
+      </article>
+    </section>
+
+    <section class="inventory">
+      <div class="section-heading">
+        <div>
+          <h2>IT Asset Inventory</h2>
+          <p>Manage your organization's IT equipment.</p>
+        </div>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search assets..."
+          aria-label="Search assets"
+        >
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Asset ID</th>
+              <th>Device</th>
+              <th>Category</th>
+              <th>Assigned To</th>
+              <th>Location</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="assetTableBody"></tbody>
+        </table>
+      </div>
+      <p id="emptyMessage" hidden>No matching assets found.</p>
+    </section>
+
+    <footer>IT Asset Management Tracker · Portfolio Project</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
