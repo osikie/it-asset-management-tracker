@@ -290,3 +290,66 @@ footer {
     padding: 15px;
   }
 }
+
+/* ===== Add Asset Form ===== */
+.add-asset-section {
+  margin-bottom: 24px;
+}
+
+.asset-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #34445c;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #dce4ef;
+  border-radius: 8px;
+  background: #fff;
+  color: #17243a;
+  font: inherit;
+  font-size: 13px;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  outline: 2px solid #2477d4;
+  outline-offset: 1px;
+}
+
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+}
+
+.secondary-button {
+  background: #e9eef5;
+  color: #34445c;
+}
+
+.secondary-button:hover {
+  background: #dce4ef;
+}
+
+@media (max-width: 600px) {
+  .asset-form {
+    grid-template-columns: 1fr;
+  }
+}

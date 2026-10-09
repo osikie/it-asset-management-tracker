@@ -42,6 +42,72 @@
       </article>
     </section>
 
+    
+    <section class="inventory add-asset-section" id="addAssetSection" hidden>
+      <div class="section-heading">
+        <div>
+          <h2>Add New Asset</h2>
+          <p>Enter the details of the IT equipment.</p>
+        </div>
+      </div>
+
+      <form id="assetForm" class="asset-form">
+        <div class="form-field">
+          <label for="assetId">Asset ID</label>
+          <input id="assetId" name="assetId" required
+                 placeholder="AST-011">
+        </div>
+
+        <div class="form-field">
+          <label for="deviceName">Device Name</label>
+          <input id="deviceName" name="deviceName" required
+                 placeholder="Dell Latitude 5450">
+        </div>
+
+        <div class="form-field">
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="">Select category</option>
+            <option>Laptop</option>
+            <option>Desktop</option>
+            <option>Monitor</option>
+            <option>Printer</option>
+            <option>Phone</option>
+            <option>Storage</option>
+            <option>Webcam</option>
+            <option>Network Device</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="assignedTo">Assigned To</label>
+          <input id="assignedTo" name="assignedTo" required
+                 placeholder="Employee name or Unassigned">
+        </div>
+
+        <div class="form-field">
+          <label for="location">Location</label>
+          <input id="location" name="location" required
+                 placeholder="Jakarta Office">
+        </div>
+
+        <div class="form-field">
+          <label for="assetStatus">Status</label>
+          <select id="assetStatus" name="assetStatus" required>
+            <option value="In Use">In Use</option>
+            <option value="Available">Available</option>
+            <option value="Maintenance">Maintenance</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit">Save Asset</button>
+          <button type="button" id="cancelAssetBtn"
+                  class="secondary-button">Cancel</button>
+        </div>
+      </form>
+    </section>
     <section class="inventory">
       <div class="section-heading">
         <div>

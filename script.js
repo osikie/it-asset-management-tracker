@@ -82,6 +82,33 @@ const assets = [
   }
 ];
 
+function loadSavedAssets() {
+  try {
+    const saved = localStorage.getItem("itAssets");
+
+    if (saved !== null) {
+      const parsed = JSON.parse(saved);
+
+      if (Array.isArray(parsed)) {
+        assets.splice(0, assets.length, ...parsed);
+      }
+    }
+  } catch (error) {
+    console.error("Could not load saved assets:", error);
+  }
+}
+
+function saveAssets() {
+  try {
+    localStorage.setItem("itAssets", JSON.stringify(assets));
+  } catch (error) {
+    alert("Unable to save assets in this browser.");
+    console.error("Could not save assets:", error);
+  }
+}
+
+loadSavedAssets();
+
 const tableBody = document.getElementById("assetTableBody");
 const searchInput = document.getElementById("searchInput");
 const emptyMessage = document.getElementById("emptyMessage");
@@ -160,9 +187,57 @@ searchInput.addEventListener("input", () => {
   renderAssets(filteredAssets);
 });
 
+
+const addAssetSection = document.getElementById("addAssetSection");
+const assetForm = document.getElementById("assetForm");
+const cancelAssetBtn = document.getElementById("cancelAssetBtn");
+
 document.getElementById("addAssetBtn").addEventListener("click", () => {
-  alert("The Add Asset feature will be implemented in the next update.");
+  addAssetSection.hidden = false;
+  addAssetSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 });
 
+cancelAssetBtn.addEventListener("click", () => {
+  assetForm.reset();
+  addAssetSection.hidden = true;
+});
+
+assetForm.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const formData = new FormData(assetForm);
+
+  const newAsset = {
+    id: formData.get("assetId").trim(),
+    device: formData.get("deviceName").trim(),
+    category: formData.get("category"),
+    assignedTo: formData.get("assignedTo").trim(),
+    location: formData.get("location").trim(),
+    status: formData.get("assetStatus")
+  };
+
+  const duplicateId = assets.some(
+    asset => asset.id.toLowerCase() === newAsset.id.toLowerCase()
+  );
+
+  if (duplicateId) {
+    alert("This Asset ID already exists. Please use a unique ID.");
+    return;
+  }
+
+  assets.push(newAsset);
+saveAssets();
+
 updateDashboard();
-renderAssets(assets);
+
+  searchInput.value = "";
+  renderAssets(assets);
+
+  assetForm.reset();
+  addAssetSection.hidden = true;
+
+  alert("Asset added successfully!");
+});
